@@ -23,7 +23,7 @@ A modern, responsive portfolio website built with Next.js and Tailwind CSS. Show
 - EmailJS
 
 
-## 📝 Getting Started
+## 📝 Getting Started.
 
 1. Clone the repo:
    ```bash
