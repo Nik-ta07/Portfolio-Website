@@ -2,20 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F8F6FF;
+    --foreground: #2D1B69;
+    --primary: #B794F4;
+    --primary-dark: #6B46C1;
+    --accent: #805AD5;
+    --card: #FFFFFF;
+    --border: #E9D8FD;
+    --text: #2D1B69;
+  }
+
+  .dark {
+    --background: #1A1B1E;
+    --foreground: #F3F4F6;
+    --primary: #6B46C1;
+    --primary-dark: #4C1D95;
+    --accent: #9F7AEA;
+    --card: #2D1B69;
+    --border: #4C1D95;
+    --text: #F3F4F6;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--text)];
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .heading-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary)] to-[var(--accent)];
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)] transition-colors;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-lg border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-colors;
+  }
+
+  .card {
+    @apply bg-[var(--card)] dark:bg-[var(--card)] backdrop-blur-sm rounded-xl border border-[var(--border)] dark:border-[var(--border)];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[var(--background)];
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  opacity: 0.5;
+  transition: background 0.2s;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
